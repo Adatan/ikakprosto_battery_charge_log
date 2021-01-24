@@ -33,15 +33,17 @@ fn main() {
 
         if current_battery_life_percent != last_battery_life_percent {
             last_battery_life_percent = current_battery_life_percent;
+            // let log_line = format!("[{}]: {}%\n", Local::now().format("%d.%m.%y %H:%M:%S").to_string(), last_battery_life_percent);
+            let log_line = format!("{};{}\n", last_battery_life_percent, Local::now().format("%H:%M:%S").to_string());
+            print!("{}", &log_line);
             let mut file = OpenOptions::new()
                 .append(true)
                 .create(true)
                 .open(FILENAME)
                 .unwrap();
 
-            file.write_all(format!("[{}]: {}%\n", Local::now().format("%d.%m.%y %H:%M:%S").to_string(), last_battery_life_percent).as_bytes()).unwrap();
+            file.write_all(log_line.as_bytes()).unwrap();
         }
-        current_battery_life_percent = 0;
         sleep(Duration::from_secs(CHECK_TIME));
     }
 }
