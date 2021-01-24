@@ -13,13 +13,9 @@ panic = "abort"
 
 [dependencies]
 
-[dependencies.winapi]
-version = "0.3.9"
-features = [
-    "winbase",
-    "impl-debug",
-    "impl-default"
-]
-
 [dependencies.chrono]
 version = "0.4.19"
+
+[target.'cfg(windows)'.dependencies.winapi]
+version = "0.3.9"
+features = [ "winbase" ]
