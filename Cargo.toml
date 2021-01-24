@@ -1,0 +1,28 @@
+[package]
+name = "battery_charge_log"
+version = "0.1.0"
+authors = ["adatan <adatan@protonmail.com>"]
+edition = "2018"
+
+[profile.release]
+lto = "fat"
+codegen-units = 3
+panic = "abort"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dependencies.winapi]
+version = "0.3.9"
+features = [
+    "winbase",
+    "impl-debug",
+    "impl-default"
+]
+
+[dependencies.chrono]
+version = "0.4.19"
+#features = [
+#    "clock"
+#]
