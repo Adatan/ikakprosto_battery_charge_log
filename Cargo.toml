@@ -23,6 +23,3 @@ features = [
 
 [dependencies.chrono]
 version = "0.4.19"
-#features = [
-#    "clock"
-#]
