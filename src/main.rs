@@ -14,19 +14,19 @@ fn main() {
     #[cfg(target_os = "windows")]
     let mut system_power_status = unsafe { zeroed::<winapi::um::winbase::SYSTEM_POWER_STATUS>() };
     loop {
-        #[cfg(target_os = "windows")]
+        #[cfg(target_os = "windows")] // Get current battery charge percent in Windows with winapi
         {
             if unsafe { winapi::um::winbase::GetSystemPowerStatus(&mut system_power_status) } == 1 {
                 current_battery_life_percent = system_power_status.BatteryLifePercent;
             }
         }
 
-        #[cfg(target_os = "macos")] // Get current battery charge percent in MacOS
+        #[cfg(target_os = "macos")] // Get current battery charge percent in Linux maybe with system stats readable file or maybe some syscall
         {
 
         }
 
-        #[cfg(target_os = "linux")] // Get current battery charge percent in Linux (like ubuntu)
+        #[cfg(target_os = "linux")] // Get current battery charge percent in MacOS with system stats readable file
         {
 
         }
